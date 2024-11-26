@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Menu</title>
+    <!-- Link to Bebas Neue font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    
+    <style>
+        
+        body {
+            font-family: 'Bebas Neue', sans-serif;
+            background-color: #f7f7f7; /* Light background for contrast */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Loader styling */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #e74c3c; /* Red background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        /* "U2" text animation styling */
+        .text {
+            font-size: 5em;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 4px;
+            margin: 0;
+            animation: fadeInUp 1.5s ease-in-out forwards;
+        }
+
+        
+        .subtext {
+            font-size: 1.5em; 
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px;
+            margin-top: -5px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-in-out 0.5s forwards;
+        }
+
+        /* Fade in-up animation for both texts */
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* PDF iframe styling */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loader container with text animations -->
+    <div id="loader">
+        <div>
+            <div class="text">U2</div>
+            <div class="subtext">Burger</div>
+        </div>
+    </div>
+
+    <!-- PDF iframe -->
+    <iframe 
+        id="pdfIframe"
+        src="https://drive.google.com/file/d/1x_xjadEkmKNTkRS5bkD1BeKPlMHbO9N0/preview">
+    </iframe>
+
+    <script>
+        // Simulate loading delay before showing the "U2 Burger" text and PDF
+        window.onload = () => {
+            setTimeout(() => {
+                // Hide the loader smoothly after the animation
+                document.getElementById('loader').style.opacity = '0';
+
+                // Show the PDF iframe
+                document.getElementById('pdfIframe').style.display = 'block';
+
+                // After the loader fades out, remove it completely
+                setTimeout(() => {
+                    document.getElementById('loader').style.display = 'none';
+                }, 500); // Fade duration for loader
+            }, 1000); // 3 seconds delay (adjust as needed for animation)
+        };
+    </script>
+
+</body>
+</html>
